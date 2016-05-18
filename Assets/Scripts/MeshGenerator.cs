@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class MeshGenerator : MonoBehaviour {
     public SquareGrid squareGrid;
-    public MeshFilter walls;
+    public GameObject walls;
     List<Vector3> vertices;
     List<int> triangles;
 
@@ -67,7 +67,9 @@ public class MeshGenerator : MonoBehaviour {
 
         wallMesh.vertices = wallVertices.ToArray();
         wallMesh.triangles = wallTriangles.ToArray();
-        walls.mesh = wallMesh;
+        wallMesh.RecalculateNormals ();
+        walls.GetComponent<MeshFilter>().mesh = wallMesh;
+        walls.GetComponent<MeshCollider>().sharedMesh = wallMesh;
     }
 
     void TriangulateSquare(Square square)
