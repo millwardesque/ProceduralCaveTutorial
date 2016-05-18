@@ -120,6 +120,7 @@ MonoBehaviour:
   seed: test
   useRandomSeed: 1
   smoothingIterations: 5
+  borderSize: 5
   randomFillPercent: 45
 --- !u!4 &623161297
 Transform:
