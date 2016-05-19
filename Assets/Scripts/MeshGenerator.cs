@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class MeshGenerator : MonoBehaviour {
     public SquareGrid squareGrid;
     public GameObject walls;
+    public float wallHeight = 5f;
+
     List<Vector3> vertices;
     List<int> triangles;
 
@@ -38,6 +40,8 @@ public class MeshGenerator : MonoBehaviour {
         mesh.RecalculateNormals();
 
         CreateWallMesh();
+
+        transform.position = new Vector3 (transform.position.x, wallHeight, transform.position.z);
     }
 
     void CreateWallMesh() {
@@ -45,7 +49,6 @@ public class MeshGenerator : MonoBehaviour {
         List<Vector3> wallVertices = new List<Vector3>();
         List<int> wallTriangles = new List<int>();
         Mesh wallMesh = new Mesh();
-        float wallHeight = 5f;
 
         foreach (List<int> outline in outlines) {
             for (int i = 0; i < outline.Count - 1; i++) {
