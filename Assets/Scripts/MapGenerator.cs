@@ -10,6 +10,7 @@ public class MapGenerator : MonoBehaviour {
     public bool useRandomSeed = true;
     public int smoothingIterations = 5;
     public int borderSize = 5;
+    public int pathwayRadius = 2;
 
     [Range (0, 100)]
     public int randomFillPercent;
@@ -173,7 +174,7 @@ public class MapGenerator : MonoBehaviour {
 
         List<Coord> line = GetLine (tileA, tileB);
         foreach (Coord c in line) {
-            DrawCircle (c, 1);
+            DrawCircle (c, pathwayRadius);
         }
     }
 

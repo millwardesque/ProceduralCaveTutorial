@@ -121,7 +121,8 @@ MonoBehaviour:
   useRandomSeed: 0
   smoothingIterations: 5
   borderSize: 5
-  randomFillPercent: 55
+  pathwayRadius: 2
+  randomFillPercent: 49
 --- !u!4 &623161297
 Transform:
   m_ObjectHideFlags: 0
