@@ -39,6 +39,15 @@ public class MeshGenerator : MonoBehaviour {
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
 
+        int tileAmount = 10;
+        Vector2[] uvs = new Vector2[vertices.Count];
+        for (int i = 0; i < vertices.Count; i++) {
+            float u = Mathf.InverseLerp(-map.GetLength(0) / 2 * squareSize, map.GetLength(0) / 2 * squareSize, vertices[i].x) * tileAmount;
+            float v = Mathf.InverseLerp(-map.GetLength(1) / 2 * squareSize, map.GetLength(1) / 2 * squareSize, vertices[i].z) * tileAmount;
+            uvs[i] = new Vector2(u, v);
+        }
+        mesh.uv = uvs;
+
         CreateWallMesh();
 
         transform.position = new Vector3 (transform.position.x, wallHeight, transform.position.z);
